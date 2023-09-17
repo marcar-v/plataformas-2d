@@ -8,7 +8,7 @@ public class EnemyObject : MonoBehaviour
     {
         if(collision.transform.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.transform.GetComponent<PlayerRespawn>().PlayerDamaged();
         }
     }
 }

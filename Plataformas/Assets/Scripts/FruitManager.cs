@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FruitManager : MonoBehaviour
 {
+    [SerializeField] GameObject transition;
+
     private void Update()
     {
         AllFruitsCollected();
@@ -12,9 +14,15 @@ public class FruitManager : MonoBehaviour
 
     public void AllFruitsCollected()
     {
-        if(transform.childCount == 1)
+        if(transform.childCount == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            transition.SetActive(true);
+            Invoke("ChangeScene", 1);
         }
     }
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
 }

@@ -43,7 +43,17 @@ public class PlayerMovement : MonoBehaviour
         if (GroundCheck.isGrounded == true)
         {
             animator.SetBool("Jump", false);
+            animator.SetBool("Falling", false);
 
+        }
+        
+        if (rb.velocity.y < 0)
+        {
+            animator.SetBool("Falling", true);
+        }
+        else if (rb.velocity.y > 0)
+        {
+            animator.SetBool("Falling", false);
         }
 
         if (largeJump)
