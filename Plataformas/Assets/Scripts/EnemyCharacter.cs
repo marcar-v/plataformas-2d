@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyCharacter : MonoBehaviour
 {
+    void Update()
+    {
+
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Player"))

@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] Animator animator;
+    [SerializeField] GameObject transition;
 
     public void PlayerDamaged()
     {
         animator.Play("Hit");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }

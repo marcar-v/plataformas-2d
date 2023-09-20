@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.28819725, y: -0.15677917}
+  m_Offset: {x: 0.28500366, y: -0.15677917}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.003}
+  m_Size: {x: 0.12021494, y: 0.0029999912}
   m_EdgeRadius: 0
 --- !u!114 &8363025818877703814
 MonoBehaviour:
@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 4282410266414288958}
   - component: {fileID: 2130504271966648518}
   - component: {fileID: 2773005385917364733}
+  - component: {fileID: 3651481922467321065}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -292,3 +293,26 @@ MonoBehaviour:
   lowJumpMultiplier: 1
   sprite: {fileID: 7238372743493173473}
   animator: {fileID: 2486873238987745389}
+--- !u!114 &3651481922467321065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976928994061136361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff47107006d0c5478380bda8fd8749a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSelected: 0
+  animator: {fileID: 2486873238987745389}
+  spriteRenderer: {fileID: 7238372743493173473}
+  playersController:
+  - {fileID: 9100000, guid: cdfcfdd493237714fa1e1fe651a3b552, type: 2}
+  - {fileID: 9100000, guid: 313b31c4cc35bb74fbe6efbb657722a8, type: 2}
+  - {fileID: 9100000, guid: 41503dac556f1884d8d36765c27e43ca, type: 2}
+  playersRenderer:
+  - {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
+  - {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
+  - {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
