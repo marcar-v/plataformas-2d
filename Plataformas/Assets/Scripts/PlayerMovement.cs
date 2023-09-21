@@ -71,14 +71,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             runSpeed = -1;
             sprite.flipX = true;
             animator.SetBool("Run", true);
 
         }
-        else if(Input.GetKey(KeyCode.D)) 
+        else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
         { 
             runSpeed = 1;
             sprite.flipX = false;
