@@ -11,6 +11,7 @@ public class GroundCheck : MonoBehaviour
         if (collision.CompareTag("Ground"))
         {
             isGrounded = true;
+            Debug.Log("Player grounded");
         }
 
     }
@@ -20,6 +21,7 @@ public class GroundCheck : MonoBehaviour
         if (!collision.CompareTag("Ground"))
         {
             isGrounded = false;
+            Debug.Log("Player not grounded");
         }
     }
 }

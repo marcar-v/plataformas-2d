@@ -27,17 +27,22 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Movement();
-        //Jump();
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        Jump();
+
+    }
+
+    void Jump()
+    {
+        if (Input.GetKey("space"))
         {
-            if(GroundCheck.isGrounded)
+            if (GroundCheck.isGrounded)
             {
                 canDoubleJump = true;
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             }
             else
             {
-                if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                if (Input.GetKeyDown("space"))
                 {
                     if (canDoubleJump)
                     {
@@ -75,40 +80,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (largeJump)
         {
-            if (rb.velocity.y < 0 && GroundCheck.isGrounded)
+            if (rb.velocity.y < 0)
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
             }
-            if (rb.velocity.y > 0 && !Input.GetKey("space") && !Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.UpArrow) && !GroundCheck.isGrounded)
+            if (rb.velocity.y > 0 && !Input.GetKey("space"))
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
             }
         }
-    }
-
-    void Jump()
-    {
-
-        //if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && GroundCheck.isGrounded)
-        //{
-        //    rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-        //}
-
-        //if(GroundCheck.isGrounded == false)
-        //{
-        //    animator.SetBool("Jump", true);
-        //    animator.SetBool("Run", false);
-
-        //}
-        //if (GroundCheck.isGrounded == true)
-        //{
-        //    animator.SetBool("Jump", false);
-        //    animator.SetBool("Falling", false);
-
-        //}
-        
-
-
     }
 
     void Movement()
