@@ -9,12 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] float speed = 1.5f;
 
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask groundLayer;
+    bool isGrounded;
+
     [SerializeField] bool largeJump = false;
     [SerializeField] float fallMultiplier = 0.5f;
     [SerializeField] float lowJumpMultiplier = 1f;
-
-    [SerializeField] float doubleJumpSpeed = 2.5f;
-    private bool canDoubleJump;
 
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] Animator animator;
@@ -28,31 +29,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Jump();
-
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.1f, 0.006f), 0, groundLayer);
     }
 
     void Jump()
     {
-        if (Input.GetKey("space"))
+        if (Input.GetKeyDown(KeyCode.Space) && GroundCheck.isGrounded)
         {
-            if (GroundCheck.isGrounded)
-            {
-                canDoubleJump = true;
-                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-            }
-            else
-            {
-                if (Input.GetKeyDown("space"))
-                {
-                    if (canDoubleJump)
-                    {
-                        animator.SetBool("DoubleJump", true);
-                        rb.velocity = new Vector2(rb.velocity.x, doubleJumpSpeed);
-                        canDoubleJump = false;
-                    }
-                }
-
-            }
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
 
         if (GroundCheck.isGrounded == false)
@@ -64,10 +48,10 @@ public class PlayerMovement : MonoBehaviour
         if (GroundCheck.isGrounded == true)
         {
             animator.SetBool("Jump", false);
-            animator.SetBool("DoubleJump", false);
             animator.SetBool("Falling", false);
         }
 
+        //Comprobación caída
         if (rb.velocity.y < 0)
         {
             animator.SetBool("Falling", true);
@@ -84,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
             }
-            if (rb.velocity.y > 0 && !Input.GetKey("space"))
+            if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
             }
