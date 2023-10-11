@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] BoxCollider2D boxCollider;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask groundLayer;
+    bool isGrounded;
 
     [SerializeField] bool largeJump = false;
     [SerializeField] float fallMultiplier = 0.5f;
@@ -31,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Jump();
-
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.1f, 0.006f), 0, groundLayer);
     }
 
 
@@ -57,10 +60,8 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded())
         {
             animator.SetBool("Jump", false);
-            animator.SetBool("DoubleJump", false);
             animator.SetBool("Falling", false);
         }
-
 
         if (rb.velocity.y < 0)
         {
