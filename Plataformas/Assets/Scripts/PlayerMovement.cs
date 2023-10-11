@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float runSpeed;
-    [SerializeField] float jumpSpeed = 3f;
+    [SerializeField] float jumpForce = 3f;
     private Rigidbody2D rb;
     [SerializeField] float speed = 1.5f;
+
+    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] LayerMask groundLayer;
 
     [SerializeField] bool largeJump = false;
     [SerializeField] float fallMultiplier = 0.5f;
     [SerializeField] float lowJumpMultiplier = 1f;
 
-    [SerializeField] float doubleJumpSpeed = 2.5f;
+    [SerializeField] float doubleJumpForce = 2.5f;
     private bool canDoubleJump;
 
     [SerializeField] SpriteRenderer sprite;
@@ -31,42 +34,33 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
+    bool isGrounded()
+    {
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, new Vector2(boxCollider.bounds.size.x, boxCollider.bounds.size.y), 0f, Vector2.down, 0.2f, groundLayer);
+        return raycastHit.collider != null;
+    }
+
     void Jump()
     {
-        if (Input.GetKey("space"))
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
-            if (GroundCheck.isGrounded)
-            {
-                canDoubleJump = true;
-                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-            }
-            else
-            {
-                if (Input.GetKeyDown("space"))
-                {
-                    if (canDoubleJump)
-                    {
-                        animator.SetBool("DoubleJump", true);
-                        rb.velocity = new Vector2(rb.velocity.x, doubleJumpSpeed);
-                        canDoubleJump = false;
-                    }
-                }
-
-            }
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
-        if (GroundCheck.isGrounded == false)
+        if (isGrounded() == false)
         {
             animator.SetBool("Jump", true);
             animator.SetBool("Run", false);
 
         }
-        if (GroundCheck.isGrounded == true)
+        if (isGrounded())
         {
             animator.SetBool("Jump", false);
             animator.SetBool("DoubleJump", false);
             animator.SetBool("Falling", false);
         }
+
 
         if (rb.velocity.y < 0)
         {
@@ -84,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
             }
-            if (rb.velocity.y > 0 && !Input.GetKey("space"))
+            if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
             }
