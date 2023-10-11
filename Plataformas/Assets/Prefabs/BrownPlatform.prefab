@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5757869337404491893}
   - component: {fileID: 1787782278799629716}
   - component: {fileID: 7193013042610179803}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: BrownPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4723634868537736578
 SpriteRenderer:

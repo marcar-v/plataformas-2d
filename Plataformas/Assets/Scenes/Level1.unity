@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 1259430763}
   - component: {fileID: 1259430765}
   - component: {fileID: 1259430764}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -18038,6 +18038,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!61 &1260324189 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2130504271966648518, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
+  m_PrefabInstance: {fileID: 5443221471770757321}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1395415353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2124912604061488739, guid: 6c7f7b7bb0554f24f8efd6aa278289af, type: 3}
@@ -18899,16 +18904,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2773005385917364733, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
+      propertyPath: totalJumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773005385917364733, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 1260324189}
+    - target: {fileID: 2773005385917364733, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
       propertyPath: groundCheck
       value: 
-      objectReference: {fileID: 5443221471770757322}
+      objectReference: {fileID: 0}
     - target: {fileID: 2773005385917364733, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3651481922467321065, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
       propertyPath: playerSelected
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3651481922467321065, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
       propertyPath: enableSelectCharacter
@@ -18939,15 +18952,11 @@ PrefabInstance:
       value: 0.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 503103068497329568, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
---- !u!4 &5443221471770757322 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2708723235249141463, guid: 95201f6aa75c044438d60f3e04ed10ca, type: 3}
-  m_PrefabInstance: {fileID: 5443221471770757321}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6869550555325766143
 PrefabInstance:
   m_ObjectHideFlags: 0
