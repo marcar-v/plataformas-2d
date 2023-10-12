@@ -26,9 +26,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float fallMultiplier = 0.5f;
     [SerializeField] float lowJumpMultiplier = 1f;
 
-    [Header("Animations")]
+    [Header("Animations & Sounds")]
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] Animator animator;
+    [SerializeField] AudioSource jumpSound;
 
 
     void Start()
@@ -59,10 +60,12 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space) && remainingJumps > 0)
         {
+
             animator.SetBool("DoubleJump", true);
             remainingJumps--;
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpSound.Play();
         }
 
 

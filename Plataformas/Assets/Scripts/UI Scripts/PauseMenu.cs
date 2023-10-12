@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pausePanel;
-    [SerializeField] AudioSource clickSound;
-
 
     public void PausePanel()
     {
@@ -30,11 +28,6 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    public void PlaySoundButton()
-    {
-        clickSound.Play();
     }
 
 }

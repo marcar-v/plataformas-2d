@@ -7,9 +7,9 @@ public class ChangeSkins : MonoBehaviour
 {
     [SerializeField] GameObject player;
 
-    public void SetPlayerFrog()
+    public void SetPlayerNinjaFrog()
     {
-        PlayerPrefs.SetString("PlayerSelected", "Frog");
+        PlayerPrefs.SetString("PlayerSelected", "NinjaFrog");
         ResetPlayerSkin();
     }
     public void SetPlayerPinkMan()

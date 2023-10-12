@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] GameObject transition;
-    [SerializeField] AudioSource clickSound;
     public void PlayGame()
     {
         transition.SetActive(true);
@@ -19,8 +18,4 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void PlaySoundButton()
-    {
-        clickSound.Play();
-    }
 }
