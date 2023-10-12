@@ -62,13 +62,20 @@ public class EnemyAI : MonoBehaviour
         actualPos = transform.position;
         yield return new WaitForSeconds(0.5f);
 
-        if( transform.position.x > actualPos.x)
+
+        if (transform.position.x > actualPos.x)
         {
             spriteRenderer.flipX = true;
+            animator.SetBool("Idle", false);
         }
         else if (transform.position.x < actualPos.x)
         {
             spriteRenderer.flipX = false;
+            animator.SetBool("Idle", false);
+        }
+        else if (transform.position.x == actualPos.x)
+        {
+            animator.SetBool("Idle", true);
         }
 
     }
