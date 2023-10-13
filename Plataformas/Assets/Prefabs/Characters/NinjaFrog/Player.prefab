@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1829389878803774256
 Transform:
   m_ObjectHideFlags: 0
@@ -1202,6 +1202,8 @@ MonoBehaviour:
   sprite: {fileID: 7238372743493173473}
   animator: {fileID: 2486873238987745389}
   jumpSound: {fileID: 2559671101047680541}
+  dustLeft: {fileID: 5698053539729385661}
+  dustRight: {fileID: 989469042252075133}
 --- !u!114 &3651481922467321065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2486873238987745389}
   transition: {fileID: 7508665171114548718}
+  lifes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &2559671101047680541
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1721,7 +1727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5256585363429407036
 Transform:
   m_ObjectHideFlags: 0
