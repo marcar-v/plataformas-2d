@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] Animator animator;
     [SerializeField] AudioSource jumpSound;
+    [SerializeField] GameObject dustLeft;
+    [SerializeField] GameObject dustRight;
 
 
     void Start()
@@ -114,6 +116,12 @@ public class PlayerMovement : MonoBehaviour
             runSpeed = -1;
             sprite.flipX = true;
             animator.SetBool("Run", true);
+            if(isGrounded())
+            {
+                dustRight.SetActive(true);
+                dustLeft.SetActive(false);
+            }
+
 
         }
         else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
@@ -121,11 +129,19 @@ public class PlayerMovement : MonoBehaviour
             runSpeed = 1;
             sprite.flipX = false;
             animator.SetBool("Run", true);
+            if(isGrounded())
+            {
+                dustLeft.SetActive(true);
+                dustRight.SetActive(false);
+            }
+
         }
         else
         {
             runSpeed = 0;
             animator.SetBool("Run", false);
+            dustLeft.SetActive(false);
+            dustRight.SetActive(false);
         }
 
         transform.position = new Vector2(transform.position.x + runSpeed * speed * Time.deltaTime, transform.position.y);
