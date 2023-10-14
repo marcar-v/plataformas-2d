@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8263316350708629758}
   - component: {fileID: 1587312865495724737}
   - component: {fileID: 5887282867742586767}
+  - component: {fileID: 7512984771733685738}
   - component: {fileID: 2305484570817487370}
   m_Layer: 0
   m_Name: Heart Box
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1587312865495724737
 SpriteRenderer:
@@ -107,6 +108,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7512984771733685738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267877013739856023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5fe2bb87b2b49499ed1bc6e535d824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2305484570817487370
 BoxCollider2D:
   m_ObjectHideFlags: 0
