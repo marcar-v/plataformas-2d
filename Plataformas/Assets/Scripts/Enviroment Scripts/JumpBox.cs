@@ -12,7 +12,16 @@ public class JumpBox : MonoBehaviour
     [SerializeField] GameObject boxCollider;
     [SerializeField] Collider2D col2D;
 
+    [SerializeField] GameObject fruit;
 
+    [SerializeField] AudioSource boxBreaksSound;
+
+
+    private void Start()
+    {
+        fruit.SetActive(false);
+        fruit.transform.SetParent(FindObjectOfType<FruitManager>().transform);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.CompareTag("Player"))
@@ -34,6 +43,8 @@ public class JumpBox : MonoBehaviour
     {
         if(boxLifes <= 0)
         {
+            fruit.SetActive(true);
+            boxBreaksSound.Play();
             boxCollider.SetActive(false);
             col2D.enabled = false;
             brokenParts.SetActive(true);
@@ -44,7 +55,7 @@ public class JumpBox : MonoBehaviour
 
     public void DestroyBox()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
 }

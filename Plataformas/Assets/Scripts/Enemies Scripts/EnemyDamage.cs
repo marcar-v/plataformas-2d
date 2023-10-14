@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyObject : MonoBehaviour
+public class EnemyDamage : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(collision.transform.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
-            collision.transform.GetComponent<PlayerRespawn>().PlayerDamaged();
+            GameController.instance.PlayerDamaged();
         }
     }
 }
