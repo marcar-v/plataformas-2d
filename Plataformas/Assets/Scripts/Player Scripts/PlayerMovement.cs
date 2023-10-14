@@ -86,11 +86,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Animación y controlador de caída
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < -0.001 && !isGrounded())
         {
             animator.SetBool("Falling", true);
         }
-        else if (rb.velocity.y > 0)
+        else if (rb.velocity.y > 0 && isGrounded())
         {
             animator.SetBool("Falling", false);
         }
