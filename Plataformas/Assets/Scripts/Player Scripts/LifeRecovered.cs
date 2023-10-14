@@ -6,7 +6,7 @@ public class LifeRecovered : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player"))
         {
             bool lifeRecovered = GameController.instance.LifeRecovered();
 

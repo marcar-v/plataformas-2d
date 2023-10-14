@@ -11,9 +11,8 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject transition;
 
     [Header("Life Counter")]
-    [SerializeField] GameObject[] lifes;
-    private int life;
-
+    private int life = 3;
+    [SerializeField] Lifes lifes;
     public static GameController instance { get; private set; }
 
     private void Awake()
@@ -28,20 +27,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        life = lifes.Length;
-    }
-    public void DeactivateLife(int index)
-    {
-        lifes[index].SetActive(false);
-    }
-
-    public void ActivateLife(int index)
-    {
-        lifes[index].SetActive(true);
-    }
-
     public void PlayerDamaged()
     {
         life -= 1;
@@ -51,7 +36,7 @@ public class GameController : MonoBehaviour
             animator.Play("Hit");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        DeactivateLife(life);
+        lifes.DeactivateLife(life);
 
     }
 
@@ -61,7 +46,8 @@ public class GameController : MonoBehaviour
         {
             return false;
         }
-        ActivateLife(life);
+
+        lifes.ActivateLife(life);
         life += 1;
 
         return true;
