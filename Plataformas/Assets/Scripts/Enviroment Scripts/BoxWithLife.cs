@@ -34,7 +34,7 @@ public class BoxWithLife : MonoBehaviour
     public void LoseLifeAndHit()
     {
         boxLifes--;
-        animator.Play("Hit");
+        //animator.Play("Hit");
         CheckBoxLife();
     }
 
@@ -48,13 +48,14 @@ public class BoxWithLife : MonoBehaviour
             col2D.enabled = false;
             brokenParts.SetActive(true);
             spriteRenderer.enabled = false;
+            animator.Play("Hit");
             Invoke("DestroyBox", 0.5f);
         }
     }
 
     public void DestroyBox()
     {
-        Destroy(transform.parent.gameObject);
+        Destroy(/*transform.parent.*/this.gameObject);
     }
 
 }

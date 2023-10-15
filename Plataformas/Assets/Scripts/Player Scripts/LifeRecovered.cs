@@ -8,9 +8,9 @@ public class LifeRecovered : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            bool lifeRecovered = GameController.instance.LifeRecovered();
+            bool lifeIsRecovered = GameController.instance.LifeRecovered();
 
-            if(lifeRecovered)
+            if(lifeIsRecovered)
             {
                 Destroy(this.gameObject);
             }
