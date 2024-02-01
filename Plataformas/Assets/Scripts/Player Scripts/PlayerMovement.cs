@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int totalJumps = 1;
     private int remainingJumps;
 
-    [SerializeField] float doubleJumpForce = 2.5f;
     private bool canDoubleJump;
 
     [Header("Large Jump")]

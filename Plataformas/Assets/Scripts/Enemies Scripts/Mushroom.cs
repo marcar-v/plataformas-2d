@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class Mushroom : EnemyController
 {
     [Header("Graphics")]
     [SerializeField] Animator animator;
-    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] float speed = 0.5f;
 
     [Header("Time")]
@@ -16,18 +14,22 @@ public class EnemyAI : MonoBehaviour
 
 
     [Header("Move Spots")]
-    [SerializeField] Transform[] moveSpots; 
-    
+    [SerializeField] Transform[] moveSpots;
+
     private int i = 0;
 
     private Vector2 actualPos;
 
 
-
-
     void Start()
     {
-        waitTime = startWaitTime; 
+        waitTime = startWaitTime;
+    }
+
+    public override void LoseLifeAndHit()
+    {
+        animator.Play("Hit_Mushroom");
+        base.LoseLifeAndHit();
     }
 
     void Update()
@@ -35,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(CheckEnemyMovement());
 
         transform.position = Vector2.MoveTowards(transform.position, moveSpots[i].transform.position, speed * Time.deltaTime);
-        
+
         if (Vector2.Distance(transform.position, moveSpots[i].transform.position) < 0.1f)
         {
             if (waitTime <= 0)
@@ -79,4 +81,5 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
+
 }

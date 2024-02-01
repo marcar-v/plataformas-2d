@@ -1,38 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class JumpDamage : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
+    public Transform target;
+
     [Header("Graphics")]
-    [SerializeField] Animator animator;
-    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] GameObject destroyParticle;
 
     [SerializeField] Collider2D col;
 
     [Header("Jump Info")]
     [SerializeField] float jumpForce;
-    [SerializeField] int lifes;
+    [SerializeField] protected int lives;
+
+    public void Awake()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = (Vector2.up * jumpForce);
             LoseLifeAndHit();
             CheckLife();
         }
     }
-    public void LoseLifeAndHit()
+
+    public virtual void LoseLifeAndHit()
     {
-        lifes--;
-        animator.Play("Hit_Mushroom");
+        lives--;
     }
-    
-    public void CheckLife()
+
+    public virtual void CheckLife()
     {
-        if(lifes == 0)
+        if (lives == 0)
         {
             destroyParticle.SetActive(true);
             spriteRenderer.enabled = false;
@@ -40,7 +47,7 @@ public class JumpDamage : MonoBehaviour
         }
     }
 
-    public void EnemyDie()
+    public virtual void EnemyDie()
     {
         Destroy(gameObject);
     }
