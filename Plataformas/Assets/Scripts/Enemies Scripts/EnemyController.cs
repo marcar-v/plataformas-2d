@@ -10,6 +10,15 @@ public class EnemyController : MonoBehaviour
     [Header("Graphics")]
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] GameObject destroyParticle;
+    [SerializeField] protected Animator animator;
+
+    [Header("Movement")]
+    [SerializeField] protected float speed = 0.5f;
+    [SerializeField] protected Transform[] wayPoints;
+    [SerializeField] float startWaitTime = 2f;
+    private float _waitTime;
+    private int _i = 0;
+    private Vector2 _actualPosition;
 
     [SerializeField] Collider2D col;
 
@@ -20,6 +29,60 @@ public class EnemyController : MonoBehaviour
     public void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    public void FixedUpdate()
+    {
+        EnemyMovement();
+    }
+    public virtual void EnemyMovement()
+    {
+        StartCoroutine(CheckEnemyMovement());
+
+        transform.position = Vector2.MoveTowards(transform.position, wayPoints[_i].transform.position, speed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, wayPoints[_i].transform.position) < 0.1f)
+        {
+            if (_waitTime <= 0)
+            {
+                if (wayPoints[_i] != wayPoints[wayPoints.Length - 1])
+                {
+                    _i++;
+                }
+                else
+                {
+                    _i = 0;
+                }
+                _waitTime = startWaitTime;
+            }
+            else
+            {
+                _waitTime -= Time.deltaTime;
+            }
+        }
+    }
+
+    public virtual IEnumerator CheckEnemyMovement()
+    {
+        _actualPosition = transform.position;
+        yield return new WaitForSeconds(0.5f);
+
+
+        if (transform.position.x > _actualPosition.x)
+        {
+            spriteRenderer.flipX = true;
+            animator.SetBool("Idle", false);
+        }
+        else if (transform.position.x < _actualPosition.x)
+        {
+            spriteRenderer.flipX = false;
+            animator.SetBool("Idle", false);
+        }
+        else if (transform.position.x == _actualPosition.x)
+        {
+            animator.SetBool("Idle", true);
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

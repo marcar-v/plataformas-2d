@@ -7,15 +7,16 @@ public class Trunk : EnemyController
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform spawnPoint;
 
-    [SerializeField] float distance;
     [SerializeField] float waitTimeToAttack = 3;
     [SerializeField] float waitedTime = 3;
-    [SerializeField] Animator animator;
+    public float _aggroDistance = 1;
 
     private void Update()
     {
         if(CanIAttack())
-            Attack();  
+        {
+            Attack();
+        }
     }
 
     public override void LoseLifeAndHit()
@@ -26,10 +27,12 @@ public class Trunk : EnemyController
 
     private bool CanIAttack()
     {
-        bool isInRange = Vector2.Distance(transform.position, target.position) < distance;
+        bool isInRange = Vector2.Distance(transform.position, target.position) < _aggroDistance;
         bool timeToAttack = waitedTime <= 0;
-        if(isInRange)
+        if (isInRange)
+        {
             waitedTime = timeToAttack ? waitTimeToAttack : waitedTime - Time.deltaTime;
+        }
 
         return isInRange && timeToAttack;
 
@@ -43,5 +46,11 @@ public class Trunk : EnemyController
     public void Shoot()
     {
         Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.25f);
+        Gizmos.DrawSphere(transform.position, _aggroDistance);
     }
 }

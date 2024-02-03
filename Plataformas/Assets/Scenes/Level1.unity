@@ -1205,6 +1205,18 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1819011969}
+    - target: {fileID: 3327659297278588386, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+      propertyPath: wayPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327659297278588386, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+      propertyPath: wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1052429905}
+    - target: {fileID: 3327659297278588386, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+      propertyPath: wayPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1851285121}
     - target: {fileID: 4167553617310933160, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -1761,6 +1773,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1052429905 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7543932454497711353, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+  m_PrefabInstance: {fileID: 685649864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1068960284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24291,7 +24308,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1819011969}
     - target: {fileID: 3327659297278588386, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+      propertyPath: wayPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327659297278588386, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
       propertyPath: moveSpots.Array.data[0]
+      value: 
+      objectReference: {fileID: 310201320}
+    - target: {fileID: 3327659297278588386, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+      propertyPath: wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1645081974}
+    - target: {fileID: 3327659297278588386, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+      propertyPath: wayPoints.Array.data[1]
       value: 
       objectReference: {fileID: 310201320}
     - target: {fileID: 3735253650331495776, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
@@ -25318,6 +25347,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 157d42ddf98370a4dbe9ee4a3d86c7a4, type: 3}
+--- !u!4 &1851285121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4167553617310933160, guid: 3e67f973ab6cee8469d75d6ebb59769a, type: 3}
+  m_PrefabInstance: {fileID: 685649864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1886034210
 GameObject:
   m_ObjectHideFlags: 0
